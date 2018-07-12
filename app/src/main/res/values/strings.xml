@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FlickrDownloadTags</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="flickr_url">"https://api.flickr.com/services/rest/?method=flickr.photos.search&amp;api_key=102a4aff0cd7f714e1ce2adfb984eab3&amp;tags=%1$s&amp;format=json&amp;nojsoncallback=1&amp;per_page=25"</string>
+</resources>
