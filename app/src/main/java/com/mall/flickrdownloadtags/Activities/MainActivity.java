@@ -392,6 +392,9 @@ public class MainActivity extends AppCompatActivity implements OnPhotoSearchRequ
         InputStream input = url.openStream();
         try {
             File storagePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
+            if(!storagePath.exists()){
+                storagePath.mkdirs();
+            }
             OutputStream output = new FileOutputStream (storagePath +"/" + destinationFile +".jpg");
             try {
                 byte[] buffer = new byte[256];
