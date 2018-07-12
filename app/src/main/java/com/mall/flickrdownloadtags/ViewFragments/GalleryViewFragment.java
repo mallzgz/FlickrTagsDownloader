@@ -116,7 +116,7 @@ public class GalleryViewFragment extends Fragment implements OnPhotoSelectedList
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Toast.makeText(getActivity(), "Load 25 photos.\nPull to refresh", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Load 25 photos.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
