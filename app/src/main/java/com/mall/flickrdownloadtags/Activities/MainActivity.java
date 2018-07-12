@@ -2,31 +2,21 @@ package com.mall.flickrdownloadtags.Activities;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.URL;
 import butterknife.ButterKnife;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.Manifest;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.content.Context;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
-
-
 
 import com.android.volley.Request.Method;
 import com.android.volley.Response.ErrorListener;
@@ -42,7 +32,6 @@ import com.mall.flickrdownloadtags.Singletons.VolleyRequestQueueService;
 import com.mall.flickrdownloadtags.ViewFragments.LoadingFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,10 +41,6 @@ public class MainActivity extends AppCompatActivity implements OnPhotoSearchRequ
 
     private static final String CURRENT_PAGE = "CURRENT_PAGE";
     private static final String CURRENT_QUERY = "CURRENT_QUERY";
-    private static final String CURRENT_PHOTOS = "CURRENT_PHOTOS";
-
-//    private ArrayList<Photo> currentPhotos;
-
 
     private String searchQuery = "zaragoza";
     private String tag = "";
@@ -99,8 +84,7 @@ public class MainActivity extends AppCompatActivity implements OnPhotoSearchRequ
         }
 
 
-        //always show discover page.
-
+        //always show online results page.
             mGalleryViewFragment = (GalleryViewFragment) mManager.findFragmentByTag(GalleryViewFragment.TAG);
 
             if (mGalleryViewFragment == null) {
@@ -142,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements OnPhotoSearchRequ
             switch (item.getItemId()) {
 
                 //navigate user to discover page
-                case R.id.navigation_home:
+                case R.id.navigation_home: //Online button
                     esLocal = false;
                     mGalleryViewFragment = (GalleryViewFragment) mManager.findFragmentByTag(GalleryViewFragment.TAG);
 
@@ -159,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements OnPhotoSearchRequ
                     return true;
 
 
-                case R.id.navigation_home_local:
+                case R.id.navigation_home_local: //Local button
                     esLocal = true;
                     mGalleryViewFragment = (GalleryViewFragment) mManager.findFragmentByTag(GalleryViewFragment.TAG);
 
@@ -209,9 +193,8 @@ public class MainActivity extends AppCompatActivity implements OnPhotoSearchRequ
 
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
-            //searches flickr for photos matching query user selected
-            // final String tag = searchQuery;
 
+            //searches flickr for photos matching query user selected
             loadingFragment.show();
 
             if (searchQuery != null && !searchQuery.equals("")) {
@@ -277,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements OnPhotoSearchRequ
                                         e.printStackTrace();
                                     }
 
-                                    //In this point, we have saved the remaining images.
+                                    //At this point, we have saved the remaining images.
                                     //Now, we have to save that images at the database.
 
 

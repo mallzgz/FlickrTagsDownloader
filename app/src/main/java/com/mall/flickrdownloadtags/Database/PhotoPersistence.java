@@ -52,8 +52,9 @@ public class PhotoPersistence {
     }
 
     /**
-     * Verifies if the photo has the tag.
+     * Verifies if the photo is related with the tag, going to photostags table..
      * @param photo
+     * @param tag
      */
     public String verifyTag(String photo, String tag){
         String retorno = "";
@@ -71,7 +72,7 @@ public class PhotoPersistence {
     }
 
     /**
-     * Select all photos who contains the tag
+     * Select all photos which contains the tag selected.
      * @param tag
      */
     public ArrayList<Photo> selectPhotoWithTag(String tag){
@@ -102,7 +103,7 @@ public class PhotoPersistence {
                 photo.setServer(server);
                 photo.setFarm(farm);
                 photo.setTitle(title);
-                //Set photo path
+                //Set photo path => Important, Picasso needs this data in order to show the local image
                 String path = movies + File.separator + id + ".jpg";
                 photo.setPath(path);
                 retorno.add(photo);
@@ -119,12 +120,8 @@ public class PhotoPersistence {
      * @param photo
      */
     public void savePhoto(Photo photo, String tag){
-        /*ContentValues contentValuesTags = getContentValuesTags(photo, tag);
-        mDatabase.insert(PhotoSchema.TABLE_NAME_PHOTOSTAGS, null, contentValuesTags);*/
-
         ContentValues contentValues = getContentValues(photo);
         mDatabase.insert(PhotoSchema.TABLE_NAME_PHOTOS, null, contentValues);
-
     }
 
     public void saveTag(Photo photo, String tag){

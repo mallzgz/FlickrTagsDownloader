@@ -24,6 +24,7 @@ public class PhotoDbHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_PHOTOS =
             "DROP TABLE IF EXISTS " + PhotoSchema.TABLE_NAME_PHOTOS;
 
+    //Table PHOTOSTAGS have a foreign key (photo_id) which references to PHOTOS photo_id.
     private static final String SQL_CREATE_PHOTOSTAGS =
             "CREATE TABLE " + PhotoSchema.TABLE_NAME_PHOTOSTAGS + " (" +
                     PhotoSchema.PhotoTagEntry._ID + " INTEGER PRIMARY KEY," +
